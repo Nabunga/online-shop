@@ -1,0 +1,46 @@
+@import url('../../styles/main.scss');
+
+.app-header {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: darkviolet;
+  &__logo {
+    margin-left: 15px;
+    width: 100px;
+    height: 100px;
+  }
+  &__menu-items {
+    margin-right: 15px;
+  }
+  &__list {
+    display: flex;
+    &-item {
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 2rem;
+      color: aliceblue;
+    }
+  }
+}
+
+.cart {
+  &-special {
+    position: relative;
+  }
+  &-qty {
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: #fff;
+    top: 60%;
+    left: 75%;
+    padding: 4px 2px 0 0;
+    font-family: "Montserrat", sans-serif;
+  }
+}
