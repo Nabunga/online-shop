@@ -1,16 +1,11 @@
-// .card-wrapper {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: center;
-// }
-
 .container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   max-width: 80%;
-  padding-top: 20px;
+  padding-top: 115px;
+  padding-bottom: 30px;
   margin: 0 auto;
+  flex: 1 1 80%;
 }

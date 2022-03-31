@@ -4,22 +4,29 @@ import MainPage from "../pages/MainPage/MainPage";
 import CartPage from '../pages/CartPage';
 import OrderPage from '../pages/OrderPage';
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 import '../styles/reset.scss';
+import './App.scss';
 
 const App = () => {
   return (
     <>
       <Router>
-        <header>
-          <Header />
-        </header>
-        <main>
-          <Switch>
-            <Route path="/" component={MainPage} exact />
-            <Route path="/cart" component={CartPage} exact />
-            <Route path="/order" component={OrderPage} exact />
-          </Switch>
-        </main>
+        <div className="wrapper">
+          <header>
+            <Header />
+          </header>
+          <main className="main">
+            <Switch>
+              <Route path="/" component={MainPage} exact />
+              <Route path="/cart" component={CartPage} exact />
+              <Route path="/order" component={OrderPage} exact />
+            </Switch>
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+        </div>
       </Router>
     </>
   )

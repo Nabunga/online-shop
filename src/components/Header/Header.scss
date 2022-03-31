@@ -1,6 +1,8 @@
 @import url('../../styles/main.scss');
 
 .app-header {
+  width: 100%;
+  position: fixed;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: space-between;

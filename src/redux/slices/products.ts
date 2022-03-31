@@ -1,13 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { axiosInstance } from "../../api/api";
-
-export const fetchAllProducts = createAsyncThunk(
-  'products/fetchAllProducts',
-  async () => {
-    const response = await axiosInstance.get('/products')
-    return response.data
-  }
-)
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchAllProducts, fetchProductsByAscend, fetchProductsByDescend, fetchAllCategories } from "./productsAsyncActions";
 
 export type TProducts = {
   id: number;
@@ -24,11 +16,15 @@ export type TProducts = {
 
 export interface productsState {
   products: Array<TProducts> | [];
-  isFetching: string
+  categories: Array<string> | [];
+  selectedCategory: string;
+  isFetching: string;
 }
 
 const initialState: productsState = {
   products: [],
+  categories: [],
+  selectedCategory: "",
   isFetching: 'idle'
 }
 
@@ -36,17 +32,28 @@ const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
       state.products = action.payload
     }),
+    builder.addCase(fetchProductsByAscend.fulfilled, (state, action) => {
+      state.products = action.payload
+    }),
+    builder.addCase(fetchProductsByDescend.fulfilled, (state, action) => {
+      state.products = action.payload
+    }),
     builder.addCase(fetchAllProducts.pending, (state) => {
       state.isFetching = 'loading'
+    }),
+    builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
+      state.categories = action.payload
     })
   }
 })
 
-export const {  } = productsSlice.actions;
+export const { setSelectedCategory } = productsSlice.actions;
 export default productsSlice.reducer;

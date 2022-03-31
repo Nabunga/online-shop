@@ -1,0 +1,41 @@
+@import url('../../styles/main.scss');
+
+.app-footer {
+  display: flex;
+  width: 100%;
+  background-color: darkviolet;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  color: aliceblue;
+  &__column-header {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin: 15px 0 10px 0;
+  }
+  &__info {
+      margin-left: 50px;
+    &-list {
+      margin: 5px 0 15px 0;
+    }
+  }
+  &__socials {
+    margin-left: 50px;
+    &-list {
+      display: flex;
+    }
+  }
+}
+
+.info-list {
+  &__list-item {
+    margin-top: 5px;
+  }
+  &__link {
+    color: aliceblue;
+  }
+}
+
+.footer-socials__icon {
+  width: 30px;
+  height: 30px;
+}
