@@ -2,9 +2,9 @@ import React, { FC } from "react";
 import UserInfo from "./UserInfo/UserInfo";
 import PaymentDetails from "./PaymentDetails/PaymentDetails";
 import Delivery from "./Delivery/Delivery";
-import './OrderPage.scss';
 import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
 import { setActiveTabIndex } from "../../redux/slices/order";
+import './OrderPage.scss';
 
 const OrderPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -20,15 +20,15 @@ const OrderPage: FC = () => {
     return activeTabIndex === "1" ? "order__nav-links active-link" : "order__nav-links" 
   }
 
-  const calculatePaymentStyleLink = () => {
-    if (firstName && lastName && tel && email && activeTabIndex === "2") {
-      return "order__nav-links active-link"
-    } else if (firstName && lastName && tel && email) {
-      return "order__nav-links"
-    } else {
-      return "order__nav-links link-disable"
-    }
-  }
+  // const calculatePaymentStyleLink = () => {
+  //   if (firstName && lastName && tel && email && activeTabIndex === "2") {
+  //     return "order__nav-links active-link"
+  //   } else if (firstName && lastName && tel && email) {
+  //     return "order__nav-links"
+  //   } else {
+  //     return "order__nav-links link-disable"
+  //   }
+  // }
 
   return (
     <div className="order__wrapper">
@@ -38,7 +38,7 @@ const OrderPage: FC = () => {
           <li className={calculateUserInfoStyleLink()} id="1" onClick={clickTabHandler}>
             User info
           </li>
-          <li className={calculatePaymentStyleLink()} id="2" onClick={clickTabHandler}>
+          <li className="order__nav-links" id="2" onClick={clickTabHandler}>
             Payment details
           </li>
           <li className={activeTabIndex === "3" ? "order__nav-links active-link" : "order__nav-links"} id="3" onClick={clickTabHandler}>

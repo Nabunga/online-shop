@@ -69,7 +69,7 @@ const UserInfo: FC = () => {
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '50ch' },
+          '& .MuiTextField-root': { m: 1, width: '50%' },
         }}
         noValidate
         autoComplete="off"

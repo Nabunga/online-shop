@@ -1,3 +1,6 @@
+const webpack = require('webpack');
+require('dotenv').config({ path: './.env' });
+
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
@@ -21,6 +24,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].[fullhash].css",
+    }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
     }),
   ],
   module: {

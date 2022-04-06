@@ -6,11 +6,10 @@ export interface orderState {
   lastName: string;
   tel: string;
   email: string;
-  cardNum: number | null;
-  cardHolder: string | null;
-  expirationMonth: number | null;
-  expirationYear: number | null;
-  cvv: number | null;
+  cardNum: string;
+  cardHolder: string;
+  expirationMonth: string;
+  expirationYear: string;
 }
 
 const initialState: orderState = {
@@ -19,11 +18,10 @@ const initialState: orderState = {
   lastName: '',
   tel: '',
   email: '',
-  cardNum: null,
-  cardHolder: null,
-  expirationMonth: null,
-  expirationYear: null,
-  cvv: null
+  cardNum: '',
+  cardHolder: '',
+  expirationMonth: '',
+  expirationYear: '',
 }
 
 const orderSlice = createSlice({
@@ -57,12 +55,9 @@ const orderSlice = createSlice({
     setExpirationYear: (state, action) => {
       state.expirationYear = action.payload
     },
-    setCvv: (state, action) => {
-      state.cvv = action.payload
-    },
   }
 })
 
-export const { setActiveTabIndex, setFirstName, setLastName, setTel, setEmail, setCardNum, setCardHolder, setExpirationMonth, setExpirationYear, setCvv } = orderSlice.actions;
+export const { setActiveTabIndex, setFirstName, setLastName, setTel, setEmail, setCardNum, setCardHolder, setExpirationMonth, setExpirationYear } = orderSlice.actions;
 
 export default orderSlice.reducer;
