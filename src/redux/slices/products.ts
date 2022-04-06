@@ -2,16 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllProducts, fetchProductsByAscend, fetchProductsByDescend, fetchAllCategories } from "./productsAsyncActions";
 
 export type TProducts = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
+  id?: number;
+  title?: string;
+  price?: number;
+  description?: string;
+  category?: string;
+  image?: string;
+  rating?: {
     rate: number;
     count: number;
   }
+  quantity?: number;
 }
 
 export interface productsState {

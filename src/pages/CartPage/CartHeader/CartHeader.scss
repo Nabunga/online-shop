@@ -1,0 +1,21 @@
+.cart__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  &-title {
+    width: 18%;
+  }
+  &-description {
+    width: 62%;
+  }
+  &-qty {
+    width: 10%;
+  }
+  &-price {
+    width: 10%;
+  }
+}

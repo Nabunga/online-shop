@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import { Rating } from "@mui/material";
 import './ProductCard.scss';
-import { useAppSelector } from "../../hooks/reduxHooks";
-import { TProducts } from '../../redux/slices/products'
 
 interface ProductCardState {
   title: string;
@@ -13,26 +11,6 @@ interface ProductCardState {
 }
 
 const ProductCard: FC<ProductCardState> = ({ title, image, price, rating, onClick }) => {
-
-  const { cart } = useAppSelector(state => state.cart)
-
-  const productsCount: {[key: string]: number} = {};
-
-  cart.forEach((product: TProducts) => {
-    if (!productsCount[product.id]) {
-      productsCount[product.id] = 0;
-    }
-    productsCount[product.id]++;
-  })
-
-  const cartProducts = Object.keys(productsCount).map((productId) => {
-    const findedProduct = cart.find((product: TProducts) => product.id === Number(productId));
-    return {
-      ...findedProduct,
-      quantity: productsCount[productId]
-    }
-  })
-
   return (
     <div className="column">
       <div className="card">
