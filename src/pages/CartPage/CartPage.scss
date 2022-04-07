@@ -83,3 +83,15 @@
   font-weight: 600;
   font-size: 2rem;
 }
+
+.qty {
+  margin: 0 7px;
+  &__btn {
+    width: 15px;
+    height: 15px;
+    border: 1px solid pink;
+    background-color: white;
+    border-radius: 3px;
+  }
+}
+

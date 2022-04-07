@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: darkviolet;
+  background-color: #E098EE;
   &__logo {
     margin-left: 15px;
     width: 100px;
@@ -22,9 +22,15 @@
       text-decoration: none;
       margin: 0 10px;
       font-size: 2rem;
+      font-weight: 600;
       color: aliceblue;
     }
   }
+}
+
+.list-item_disabled {
+  color: lightgray;
+  pointer-events: none;
 }
 
 .cart {
@@ -42,7 +48,11 @@
     color: #fff;
     top: 60%;
     left: 75%;
-    padding: 4px 2px 0 0;
+    padding: 3px 0 0 0;
     font-family: "Montserrat", sans-serif;
+    &_hidden {
+      display: none;
+    }
   }
 }
+

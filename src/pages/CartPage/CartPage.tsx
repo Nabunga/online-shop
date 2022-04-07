@@ -1,39 +1,27 @@
-import React, { FC } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
-import { useAppSelector } from "../../hooks/reduxHooks";
+import React, { FC, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/reduxHooks";
+import { setTotalPrice, descreaseProductQty, increaseProductQty } from "../../redux/slices/cart";
 import { TProducts } from "../../redux/slices/products";
 import CartHeader from "./CartHeader/CartHeader";
 import './CartPage.scss';
 
 const CartPage: FC = () => {
-  const { cart } = useAppSelector(state => state.cart)
+  const dispath = useAppDispatch();
+  const { cart, totalPrice } = useAppSelector(state => state.cart)
   const history = useHistory()
-
-  const productsCount: { [key: string]: number } = {};
-
-  cart.forEach((product: TProducts) => {
-    if (!productsCount[product.id]) {
-      productsCount[product.id] = 0;
-    }
-    productsCount[product.id]++;
-  })
-
-  const cartProducts = Object.keys(productsCount).map((productId) => {
-    const findedProduct = cart.find((product: TProducts) => product.id === Number(productId));
-    return {
-      ...findedProduct,
-      quantity: productsCount[productId]
-    }
-  })
-  
-  const cartPrices = cartProducts.map((product: TProducts) => {
+ 
+  const cartPrices = cart.map((product: TProducts) => {
     return product.price * product.quantity
   })
-  const totalPrice = cartPrices.reduce((prev, next) => prev + next, 0).toFixed(2)
-  
-  const renderedCartProducts = cartProducts.map((product: TProducts) => {
+
+  useEffect(() => {
+    dispath(setTotalPrice(cartPrices.reduce((prev, next) => prev + next, 0).toFixed(2)))
+  }, [cart])
+
+  const renderedCartProducts = cart.map((product: TProducts) => {
     return (
-      <div className="cart-product__container" key={product.id}>
+      <div className="cart-product__container" key={product.id} >
 
         <div className="cart-product__img-title">
           <img className="cart-product__img" src={product.image} alt="product" />
@@ -43,10 +31,12 @@ const CartPage: FC = () => {
           {product.description}
         </div>
         <div className="cart-product__qty">
-          {product.quantity}
+          <button className="qty__btn" onClick={() => dispath(descreaseProductQty(product))}>-</button>
+          <span className="qty">{product?.quantity}</span> 
+          <button className="qty__btn" onClick={() => dispath(increaseProductQty(product))}>+</button>
         </div>
         <div className="cart-product__price">
-          {product.price}
+          {(product.price * product.quantity).toFixed(2)}
         </div>
 
       </div>
@@ -59,12 +49,12 @@ const CartPage: FC = () => {
 
   return (
     <div className="cart__container">
-      {cartProducts.length > 0 ? <CartHeader /> : <div className="empty-cart">Cart is empty!</div> }
+      {cart.length > 0 ? <CartHeader /> : <div className="empty-cart">Cart is empty!</div> }
       {renderedCartProducts}
-      {cartProducts.length > 0 ? <div className="total-price">Total price: {totalPrice}</div> : ''}
-      {cartProducts.length > 0 ? 
+      {cart.length > 0 ? <div className="total-price">Total price: {totalPrice}</div> : ''}
+      {cart.length > 0 ? 
         <div className="order-btn" >
-          <button className="checkout-btn" onClick={orderBtnHandler}>Go to checkout</button>
+          <button className="checkout-btn" onClick={orderBtnHandler}>Place an order</button>
         </div> : ''
       }
     </div>

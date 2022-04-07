@@ -52,6 +52,17 @@
       margin-top: 10px;
     }
   }
+  &__btn {
+    margin-top: 50%;
+    width: 150px;
+    height: 60px;
+    border: 1px solid pink;
+    border-radius: 10px;
+    background-color: pink;
+    color: white;
+    font-weight: 600;
+    font-size: 1.7rem;
+  }
 }
 
 .active-link {

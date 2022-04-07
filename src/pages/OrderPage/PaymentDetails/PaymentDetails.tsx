@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import VisaIcon from '../../../assets/logo/cc-visa-brands.svg';
 import { useAppDispatch, useAppSelector } from "../../../hooks/reduxHooks";
-import { setCardNum, setExpirationMonth, setExpirationYear } from '../../../redux/slices/order';
+import { setCardHolder, setCardNum, setExpirationMonth, setExpirationYear } from '../../../redux/slices/order';
 import './PaymentDetails.scss';
 
 const PaymentDetails: FC = () => {
   const dispatch = useAppDispatch();
-  const { cardNum, expirationMonth, expirationYear, firstName, lastName } = useAppSelector(state => state.order)
+  const { cardNum, cardHolder, expirationMonth, expirationYear, firstName, lastName } = useAppSelector(state => state.order)
 
   return (
     <div className="payment__container">
@@ -36,7 +36,8 @@ const PaymentDetails: FC = () => {
         <div className="input-card-holder__first-group">
           <input 
             className="input-base card-holder" 
-            defaultValue={`${firstName} ${lastName}`} 
+            value={cardHolder}
+            onChange={(e) => dispatch(setCardHolder((e.target.value)))}
             type="text" 
             name="card-holder" 
             placeholder="Card holder"

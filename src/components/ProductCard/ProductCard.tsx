@@ -24,7 +24,7 @@ const ProductCard: FC<ProductCardState> = ({ title, image, price, rating, onClic
         <div className="card__title">
           {title}
         </div>
-        <button className="card__btn" onClick={onClick}>Add to card</button>
+        <button className="card__btn" onClick={onClick}>Add to cart</button>
       </div>
     </div>
   )

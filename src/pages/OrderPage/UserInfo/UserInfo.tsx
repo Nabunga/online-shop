@@ -105,7 +105,7 @@ const UserInfo: FC = () => {
             id="tel"
             label="Telephone number"
             value={tel}
-            onChange={(e) => dispatch(setTel(e.target.value))}
+            onChange={(e) => dispatch(setTel(e.target.value.replace(/[^0-9]/g, '')))}
             onBlur={validateTel}
             helperText={helperTextTel}
           />
